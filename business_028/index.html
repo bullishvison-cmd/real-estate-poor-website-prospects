@@ -671,14 +671,27 @@ gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:
 })();
 </script>
 <script>
-/* Safety net (fix 2026-11-06): the reveal animation must never leave content hidden.
-   4s after load, force every .reveal element visible, clear any GSAP inline hiding
-   on hero elements, and remove the loader, no matter what. */
-setTimeout(function(){
-  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('revealed'); el.style.opacity='1'; el.style.transform='none'; el.style.filter='none'; });
-  if(window.gsap){ try{ gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img,.hero img,.hero-fig,.hero .pills,section,.card,.listing-card',{clearProps:'opacity,transform,filter'}); }catch(e){} }
-  var l=document.getElementById('loader'); if(l) l.remove();
-},4000);
+/* Safety net v2 (fix 2026-11-06): the reveal animation must never leave content hidden.
+   Force every .reveal element visible, and keep forcing it (every 500ms for 20s),
+   so a late GSAP tween or a re-rendered card can never re-hide content. */
+(function(){
+  function forceVisible(){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      el.classList.add('revealed');
+      el.style.opacity='1'; el.style.transform='none'; el.style.filter='none';
+    });
+    var l=document.getElementById('loader'); if(l) l.remove();
+  }
+  forceVisible();
+  var iv=setInterval(forceVisible,500);
+  setTimeout(function(){ clearInterval(iv); },20000);
+  if(window.MutationObserver){
+    var mo=new MutationObserver(function(){ forceVisible(); });
+    if(document.body) mo.observe(document.body,{childList:true,subtree:true});
+    setTimeout(function(){ mo.disconnect(); },20000);
+  }
+  if(window.gsap){ try{ gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img,.hero img,.hero-fig,.hero .pills,section',{clearProps:'opacity,transform,filter'}); }catch(e){} }
+})();
 </script>
 <script>setTimeout(function(){var l=document.getElementById('loader'); if(l) l.remove();},2200);</script>
 
