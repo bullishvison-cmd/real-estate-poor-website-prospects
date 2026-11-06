@@ -654,10 +654,12 @@ render(LISTINGS);
 
 </script>
 <script>
+/* Reveal (fixed 2026-11-06): replaced an unreliable reveal script that left the page blank — content hidden on load, reveal trigger never firing. Uses the working 005 pattern: content is never hidden without JS, GSAP when available, IntersectionObserver fallback. */
+
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var heroEls=document.querySelectorAll('.hero .lede,.hero .cta-row,.hero-img');
-  var scrollEls=document.querySelectorAll('.search,.section-head,.why-card,.fix,.two-col>div,.form-wrap,.cta-final,.card');
+  var scrollEls=document.querySelectorAll('.search,.section-head,.why-card,.fix,.fix-step,.listing-card,.two-col>div,.form-wrap,.cta-final,.card');
   function revealFallback(){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:.12});
     scrollEls.forEach(function(el){el.classList.add('reveal');io.observe(el);});
@@ -683,6 +685,16 @@ gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:
     setTimeout(function(){gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img',{clearProps:'opacity,transform,filter'});},3500);
   } else { revealFallback(); }
 })();
+</script>
+<script>
+/* Safety net (fix 2026-11-06): the reveal animation must never leave content hidden.
+   4s after load, force every .reveal element visible, clear any GSAP inline hiding
+   on hero elements, and remove the loader, no matter what. */
+setTimeout(function(){
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('revealed'); el.style.opacity='1'; el.style.transform='none'; el.style.filter='none'; });
+  if(window.gsap){ try{ gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img,.hero img,.hero-fig,.hero .pills,section,.card,.listing-card',{clearProps:'opacity,transform,filter'}); }catch(e){} }
+  var l=document.getElementById('loader'); if(l) l.remove();
+},4000);
 </script>
 <script>setTimeout(function(){var l=document.getElementById('loader'); if(l) l.remove();},2200);</script>
 

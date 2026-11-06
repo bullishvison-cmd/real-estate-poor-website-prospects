@@ -639,20 +639,19 @@ render();
 
 </script>
 <script>
-/* POLISH 2026-11-05: restrained motion — GSAP hero entrance; IntersectionObserver
-   scroll-reveal (content is visible by default; .reveal is only added by JS when IO
-   exists). Listing cards are re-rendered by filters, so they are observed once at
-   load and appear instantly on later filter renders. Skipped under reduced-motion. */
+/* Reveal (fixed 2026-11-06): replaced an unreliable reveal script that left the page blank — content hidden on load, reveal trigger never firing. Uses the working 005 pattern: content is never hidden without JS, GSAP when available, IntersectionObserver fallback. */
+
 (function(){
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var io=null;
-  function observe(els){
-    if(!('IntersectionObserver' in window)) return;
-    if(!io){ io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } }); },{threshold:.08,rootMargin:'0px 0px -4% 0px'}); }
-    els.forEach(function(el){ if(el&&!el.classList.contains('reveal')){ el.classList.add('reveal'); io.observe(el); } });
+  var heroEls=document.querySelectorAll('.hero .lede,.hero .cta-row,.hero-img');
+  var scrollEls=document.querySelectorAll('.search,.section-head,.why-card,.fix,.fix-step,.listing-card,.two-col>div,.form-wrap,.cta-final,.card');
+  function revealFallback(){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:.12});
+    scrollEls.forEach(function(el){el.classList.add('reveal');io.observe(el);});
   }
   initAurora(document.getElementById('aurora'));
-  if(window.gsap){
+  if(window.gsap&&window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
     
 (function(){
   var h1=document.querySelector('.hero h1'); if(!h1) return;
@@ -663,13 +662,24 @@ render();
     else { h1.appendChild(n); }
   });
 })();
-gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:.055,ease:'power3.out',delay:1.7,clearProps:'opacity,transform,filter'});
-    gsap.from('.hero-grid > div:first-child > :not(h1)',{y:16,opacity:0,duration:.5,stagger:.07,ease:'power2.out',delay:1.95});
-    gsap.from('.hero-grid > div:last-child',{y:16,opacity:0,duration:.6,delay:.15,ease:'power2.out'});
-  }
-  observe(document.querySelectorAll('.why > div,.fix li,.two'));
-  observe(document.querySelectorAll('#grid .card'));
+gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:.055,ease:'power3.out',delay:1.7});
+    gsap.from('.hero .lede,.hero .cta-row,.hero-img',{opacity:0,y:18,duration:.6,stagger:.08,ease:'power2.out',delay:1.95});
+    gsap.utils.toArray(scrollEls).forEach(function(el){
+      gsap.from(el,{opacity:0,y:20,duration:.5,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+    });
+    setTimeout(function(){gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img',{clearProps:'opacity,transform,filter'});},3500);
+  } else { revealFallback(); }
 })();
+</script>
+<script>
+/* Safety net (fix 2026-11-06): the reveal animation must never leave content hidden.
+   4s after load, force every .reveal element visible, clear any GSAP inline hiding
+   on hero elements, and remove the loader, no matter what. */
+setTimeout(function(){
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('revealed'); el.style.opacity='1'; el.style.transform='none'; el.style.filter='none'; });
+  if(window.gsap){ try{ gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img,.hero img,.hero-fig,.hero .pills,section,.card,.listing-card',{clearProps:'opacity,transform,filter'}); }catch(e){} }
+  var l=document.getElementById('loader'); if(l) l.remove();
+},4000);
 </script>
 <script>setTimeout(function(){var l=document.getElementById('loader'); if(l) l.remove();},2200);</script>
 
