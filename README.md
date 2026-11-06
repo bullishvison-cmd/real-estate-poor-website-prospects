@@ -4,8 +4,26 @@ Live-browser verified 2026-11-05. Each site was opened in a real browser (homepa
 
 - **73 confirmed poor** — no usable listings/search on their own site
 - **Source list:** 155 candidates checked (47 poor, 99 good, 8 uncertain, 1 wrong firm) + earlier batches
-- **Status:** research only — no one contacted, no demo built, nothing sent yet
-- Website redesign demos for these 73 come later.
+- **Status:** research only — no one contacted, nothing sent yet
+- **Website redesign demos:** 13 built (React Bits level — Aurora shader hero, Blur Text headline, circular logo intro, each in the brokerage's own colours), live below. The other 60 of the 73 have no demo yet.
+
+## Concept redesign demos (live)
+
+Each is a single self-contained page — an independent concept redesign, not affiliated with the brokerage. The "what this fixes" message lives in the pitch email, not on the demo page.
+
+- [#005 Freedom Realty — Saco, ME](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_005/)
+- [#006 Summit Realty — Pittsfield, MA](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_006/)
+- [#007 APP Realty — Succasunna, NJ](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_007/)
+- [#009 Invest Tennessee Realty — Spring Hill, TN](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_009/)
+- [#010 Hope Realty & Development — Brewton, AL](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_010/)
+- [#012 Cannon Realty Group — Paris, TN](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_012/)
+- [#014 Pine & Ivy Realty — Starkville, MS](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_014/)
+- [#015 Plaza Realty RGV — Edinburg, TX](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_015/)
+- [#020 Arizona Home Brokerage — San Tan Valley, AZ](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_020/)
+- [#022 White Farmhouse Realty — Wayne, NE](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_022/)
+- [#024 Riggin & Company — Wichita, KS](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_024/)
+- [#027 Humboldt Realty — Humboldt, IA](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_027/)
+- [#028 NextGen Realtors — La Crosse, WI](https://bullishvison-cmd.github.io/real-estate-poor-website-prospects/business_028/)
 
 ## Files
 
