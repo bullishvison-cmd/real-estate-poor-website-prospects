@@ -668,16 +668,20 @@ apply();
 
 </script>
 <script>
-/* Restrained premium reveal (polish 2026-11-05): GSAP + ScrollTrigger when available, IntersectionObserver fallback. .reveal is added by JS only, so content is never hidden without JS; reduced-motion skips animation entirely. */
-(function(){
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
-  var els=document.querySelectorAll('section, .card, .why, .fix-step');
-  els.forEach(function(el){el.classList.add('reveal');});
-  initAurora(document.getElementById('aurora'));
-  if(window.gsap && window.ScrollTrigger){
-    document.documentElement.classList.add('gsap-on');
-    gsap.registerPlugin(ScrollTrigger);
+/* Reveal (fixed 2026-11-06): replaced the old script that hid every section on load and only revealed via ScrollTrigger — that left the whole page invisible. Uses the working 005 pattern: content is never hidden without JS, GSAP when available, IntersectionObserver fallback. */
 
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var heroEls=document.querySelectorAll('.hero .lede,.hero .cta-row,.hero-img');
+  var scrollEls=document.querySelectorAll('.search,.section-head,.why-card,.fix,.fix-step,.two-col>div,.form-wrap,.cta-final,.card');
+  function revealFallback(){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});},{threshold:.12});
+    scrollEls.forEach(function(el){el.classList.add('reveal');io.observe(el);});
+  }
+  initAurora(document.getElementById('aurora'));
+  if(window.gsap&&window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    
 (function(){
   var h1=document.querySelector('.hero h1'); if(!h1) return;
   var nodes=Array.prototype.slice.call(h1.childNodes); h1.innerHTML='';
@@ -687,19 +691,23 @@ apply();
     else { h1.appendChild(n); }
   });
 })();
-    gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:.055,ease:'power3.out',delay:1.7,clearProps:'opacity,transform,filter'});
-    els.forEach(function(el){
-      gsap.from(el,{opacity:0,y:36,duration:.85,ease:'power3.out',clearProps:'transform,opacity',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:.055,ease:'power3.out',delay:1.7});
+    gsap.from('.hero .lede,.hero .cta-row,.hero-img',{opacity:0,y:18,duration:.6,stagger:.08,ease:'power2.out',delay:1.95});
+    gsap.utils.toArray(scrollEls).forEach(function(el){
+      gsap.from(el,{opacity:0,y:20,duration:.5,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
     });
-  } else if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}});
-    },{threshold:0.12});
-    els.forEach(function(el){io.observe(el);});
-  } else {
-    els.forEach(function(el){el.classList.add('revealed');});
-  }
+    setTimeout(function(){gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img',{clearProps:'opacity,transform,filter'});},3500);
+  } else { revealFallback(); }
 })();
+</script>
+<script>
+/* Safety net (fix 2026-11-06): the reveal animation must never leave content hidden.
+   4s after load, force every .reveal element visible and remove the loader, no matter what. */
+setTimeout(function(){
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('revealed'); el.style.opacity='1'; el.style.transform='none'; el.style.filter='none'; });
+  if(window.gsap){ try{ gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img,section,.card',{clearProps:'opacity,transform,filter'}); }catch(e){} }
+  var l=document.getElementById('loader'); if(l) l.remove();
+},4000);
 </script>
 <script>setTimeout(function(){var l=document.getElementById('loader'); if(l) l.remove();},2200);</script>
 
