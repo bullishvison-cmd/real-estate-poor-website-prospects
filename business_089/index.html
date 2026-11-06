@@ -212,6 +212,17 @@ header.site .brand,header .brand{font-size:30px!important;font-weight:800!import
   .navlinks{gap:18px!important;flex-wrap:wrap!important}
   .brand{font-size:28px!important}
 }
+
+/* --- fix73polish: readable eyebrow, warm panels, header space + border --- */
+:root{--accent-text:#792d36;--panel:#354B35}
+.hero .eyebrow,.eyebrow{color:var(--accent-text)!important}
+.shiny{background:linear-gradient(110deg,var(--accent-text) 30%,var(--accent) 50%,var(--accent-text) 70%)!important}
+.search,.form-wrap{background:var(--panel)!important}
+footer{background:var(--panel)!important}
+.disclaimer{background:var(--panel)!important}
+.cta-final,.final-cta{background:var(--panel)!important}
+header.site,header{border-bottom:1px solid var(--line)!important}
+@media (max-width:860px){.nav{padding:14px 20px!important}}
 </style>
 </head>
 <body>
