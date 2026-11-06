@@ -1,0 +1,12 @@
+# What this fixes - removed from the demo, for the pitch email
+
+Removed from the business_083 demo on 2026-11-06 at Gautam's instruction.
+Use in the email pitch, not on the demo page.
+
+What this redesign fixes From a wall of SOLD signs to what's actually for sale Built from a direct check of the current Sachs 5th Real Estate and Auction website on 5 November 2026.
+
+ 01 — What's missing No prices shown; listings mostly sold Search only external (no own-site search)
+
+ 02 — Why it costs leads A buyer who sees SOLD on nearly every card assumes the firm has nothing left to sell — and stops looking.
+
+ 03 — How this fixes it This concept leads with what is actually for sale, clearly labelled, and keeps sold homes out of the buyer's way.
