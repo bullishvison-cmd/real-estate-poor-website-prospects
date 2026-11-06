@@ -1,0 +1,8 @@
+# What this fixes - content removed from the demo, for the pitch email
+
+Removed from business_022-reactbits demo on 2026-11-06 at Gautam's instruction.
+Use in the email pitch, not on the demo page.
+
+What this redesign fixes Three gaps on the current site - and the fix Based on a review of the brokerage's current homepage on 5 November 2026. This concept shows the change, not a claim about the brokerage's sales. 
+ What's missing: every listing photo is a placeholder All 12 'New Properties' on the current homepage use the same grey image literally named Image-place-holder.jpg. A buyer cannot see a single home - and one listing, 212 Lincoln St at $10,000, shows 'N/A' for type, beds, baths, square footage and garages. Why that costs leads: buyers can't picture living there A photo is the first showing. When every card is the same grey box, buyers scroll past homes they might have loved - and a $10,000 lot with no details at all looks like a mistake rather than an opportunity. The firm's real inventory is doing the work of an empty page. How this fixes it: a real photo and complete facts on every card The redesign gives each of the 12 real listings its own photo and full details, plus search by price, beds, baths and type - so the $120,000 starter home and the $395,000 family home can each be found and judged on their merits. Incomplete data is flagged for completion instead of published as 'N/A'. 
+ From the firm's own website: "Trisha was wonderful to work with. She has great knowledge of the local market and went to extreme lengths to make sure our property was marketed in a professional manner." - client story published on whitefarmhouserealty.com.

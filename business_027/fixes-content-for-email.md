@@ -1,0 +1,8 @@
+# What this fixes - removed from the demo, for the pitch email
+
+Removed from the business_027 demo on 2026-11-06 at Gautam's instruction.
+Use in the email pitch, not on the demo page.
+
+What this redesign fixes Three gaps on the current site — and the fix Based on a review of the brokerage's current homepage on 5 November 2026. This concept shows the change, not a claim about the brokerage's sales. 
+ What's missing: zero listings — and a stock-photo hero The current homepage shows no properties, no prices and no search at all. The hero image is a generic Adobe Stock photo, not a real listing — and the firm's own email address displays broken, with a space in the middle of it. Why that costs leads: buyers can't see what Ross is selling Ross Petersen has real listings — 105 5th St S in Humboldt, $184,900, 4 bed / 2 bath — but none of them appear on his own homepage. A buyer who finds the site sees services and slogans, then has to go elsewhere to find a home. And a buyer who tries to copy the broken email address will bounce. How this fixes it: real listings up front, contact that works The redesign opens with searchable listings led by the real 105 5th St S home, uses a real home photo as the hero, and prints the email address correctly on every page — with a lead form beside it. The firm's technology claim finally matches what a visitor can see. 
+ From the firm's own website: “We had a difficult home search but the team at Humboldt Realty were very patient, knowledgeable, and helpful throughout the entire process.” — Phil Mayo, client story published on humboldtrealtyia.com.

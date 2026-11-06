@@ -128,7 +128,7 @@ footer a{color:var(--light)}
 footer .cols{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:24px}
 #aurora{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none}
 .hero .container{position:relative;z-index:1}
-.hero h1 .shiny{background:linear-gradient(110deg,#B77B48 30%,#F3E8D5 50%,#E8B84B 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4.5s linear infinite}
+.hero h1 .shiny{background:linear-gradient(110deg,#B77B48 30%,#F0C75E 50%,#E8B84B 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4.5s linear infinite}
 @keyframes shine{to{background-position:-220% 0}}
 #hero-photo{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.55)}
 #hero-photo img{width:100%;height:480px;object-fit:cover;display:block}
@@ -142,6 +142,16 @@ html.js .settle.in{opacity:1;filter:blur(0);transform:none}
 @media(max-width:640px){.container{padding-inline:20px}section{padding:56px 0}.grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}form.lead{grid-template-columns:1fr}.nav nav{display:none}.hero{padding-top:calc(120px + var(--disc-h))}.nav .btn{padding:10px 14px;font-size:13px;white-space:nowrap}:root{--disc-h:52px}.disclaimer{font-size:11px;padding:8px 12px}#hero-3d{height:320px}#hero-photo img{height:320px}}
 @media(max-width:400px){.container{padding-inline:16px}section{padding:44px 0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}html.js .settle{opacity:1!important;filter:none!important;transform:none!important}}
+
+#aurora{position:fixed!important;inset:0!important;width:100%!important;height:100%!important}
+section,footer{position:relative;z-index:1}
+section{background:rgba(23,16,9,.90)}
+.hero{background:transparent!important}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,8,5,.62),rgba(14,8,5,.28) 55%,rgba(14,8,5,.55));z-index:1}
+.hero .container{position:relative;z-index:2}
+.cta-final,.final-cta{background:rgba(14,8,5,.72)}
+.cta-final h2,.final-cta h2{color:#F3E8D5}.cta-final p,.final-cta p{color:#C9BBA6}
+footer{background:rgba(14,8,5,.88)!important}
 </style>
 <noscript><style>.settle{opacity:1!important;filter:none!important;transform:none!important}#loader{display:none!important}#progress{display:none}#hero-3d .fallback{display:block!important}#hero-3d .spin-hint{display:none!important}</style></noscript>
 </head>
@@ -467,6 +477,7 @@ html.js .settle.in{opacity:1;filter:blur(0);transform:none}
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
 
+    var frameTick = 0;
     function frame(now) {
       raf = 0;
       if (!visible || document.hidden) return;
@@ -486,16 +497,16 @@ html.js .settle.in{opacity:1;filter:blur(0);transform:none}
       state.reach += ((engaged ? 1 : 0) - state.reach) * (1 - Math.exp(-dt / (engaged ? 0.9 : 1.4)));
       if (!S.intro || reduce) state.reveal = 1;
       else if (state.reveal < 1) state.reveal = Math.min(1, state.reveal + dt / INTRO_SECONDS);
-      render();
+      if ((frameTick = (frameTick || 0) + 1) % 2 === 0) render();
       raf = requestAnimationFrame(frame);
     }
 
     function wake() { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); }
 
     function resize() {
-      var width = Math.max(1, container.clientWidth);
-      var height = Math.max(1, container.clientHeight);
-      var ratio = Math.min(window.devicePixelRatio || 1, 2);
+      var width = Math.max(1, window.innerWidth || container.clientWidth);
+      var height = Math.max(1, window.innerHeight || container.clientHeight);
+      var ratio = Math.min(window.devicePixelRatio || 1, 1.5) * 0.55;
       view.width = width; view.height = height;
       canvas.width = Math.max(1, Math.round(width * ratio));
       canvas.height = Math.max(1, Math.round(height * ratio));
@@ -503,7 +514,7 @@ html.js .settle.in{opacity:1;filter:blur(0);transform:none}
     }
 
     function onPointerMove(e) {
-      var rect = container.getBoundingClientRect();
+      var rect = canvas.getBoundingClientRect();
       pointer.x = e.clientX - rect.left;
       pointer.y = e.clientY - rect.top;
       var wasInside = pointer.inside;
@@ -523,7 +534,7 @@ html.js .settle.in{opacity:1;filter:blur(0);transform:none}
       visible = es.some(function (e) { return e.isIntersecting; });
       if (visible) { last = 0; wake(); }
     });
-    io.observe(container);
+    io.observe(canvas);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerdown', onPointerMove, { passive: true });
     window.addEventListener('pointerup', onPointerUp, { passive: true });
@@ -616,8 +627,8 @@ if(h1 && hasGsap && !reduced){
       });
     }
   });
-  gsap.from('#hero-h1 .w', {y:26, opacity:0, filter:'blur(10px)', duration:.7, stagger:.055, ease:'power3.out', delay:.95});
-  gsap.from('.hero .lede, .hero .pills, .hero .cap, .hero .eyebrow', {y:16, opacity:0, duration:.55, stagger:.08, ease:'power2.out', delay:1.25});
+  gsap.from('#hero-h1 .w', {y:26, opacity:0, filter:'blur(10px)', duration:.7, stagger:.055, ease:'power3.out', delay:1.7});
+  gsap.from('.hero .lede, .hero .pills, .hero .cap, .hero .eyebrow', {y:16, opacity:0, duration:.55, stagger:.08, ease:'power2.out', delay:1.95});
   setTimeout(function(){ gsap.set('#hero-h1 .w, .hero .lede, .hero .pills, .hero .cap, .hero .eyebrow', {clearProps:'all'}); }, 3000);
 }
 /* ---- settle reveals: out of focus -> sharp (IO) ---- */
