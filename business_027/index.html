@@ -124,7 +124,7 @@ footer .cols{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;
 .hero .container{position:relative;z-index:1}
 .hero h1 .shiny{background:linear-gradient(110deg,var(--accent) 30%,#F0C75E 50%,#E8B84B 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4.5s linear infinite}
 @keyframes shine{to{background-position:-220% 0}}
-#loader{position:fixed;inset:0;background:#0E0805;z-index:100;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;animation:loaderOut .45s ease 1.6s forwards;pointer-events:none}
+#loader{position:fixed;inset:0;background:#0E0805;z-index:100;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;animation:loaderOut .45s ease 0.8s forwards;pointer-events:none}
 @keyframes loaderOut{to{opacity:0;visibility:hidden}}
 #loader .circ{width:230px;height:230px;position:relative}
 #loader .circ svg.ring{width:100%;height:100%;animation:spin 8s linear infinite}
@@ -651,22 +651,10 @@ render();
   initAurora(document.getElementById('aurora'));
   if(window.gsap&&window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
-    
-(function(){
-  var h1=document.querySelector('.hero h1'); if(!h1) return;
-  var nodes=Array.prototype.slice.call(h1.childNodes); h1.innerHTML='';
-  nodes.forEach(function(n){
-    if(n.nodeType===3){ n.textContent.split(/\s+/).filter(Boolean).forEach(function(w){var s=document.createElement('span'); s.className='w'; s.textContent=w; h1.appendChild(s); h1.appendChild(document.createTextNode(' '));}); }
-    else if(n.nodeName==='EM' || (n.nodeType===1 && n.className && (''+n.className).indexOf('accent')>=0)){ n.textContent.split(/\s+/).filter(Boolean).forEach(function(w){var s=document.createElement('span'); s.className='w shiny'; s.textContent=w; h1.appendChild(s); h1.appendChild(document.createTextNode(' '));}); }
-    else { h1.appendChild(n); }
-  });
-})();
-gsap.from('.hero h1 .w',{y:26,opacity:0,filter:'blur(10px)',duration:.7,stagger:.055,ease:'power3.out',delay:1.7});
-    gsap.from('.hero .lede,.hero .cta-row,.hero-img',{opacity:0,y:18,duration:.6,stagger:.08,ease:'power2.out',delay:1.95});
+    /* Instant hero (fix 2026-11-07): headline, intro, buttons and hero image show immediately — no fade-in. The old gsap.from hid them for ~2s and the top looked blank on phones. Below-fold sections still fade in on scroll. */
     gsap.utils.toArray(scrollEls).forEach(function(el){
       gsap.from(el,{opacity:0,y:20,duration:.5,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
     });
-    setTimeout(function(){gsap.set('.hero h1 .w,.hero .lede,.hero .cta-row,.hero-img',{clearProps:'opacity,transform,filter'});},3500);
   } else { revealFallback(); }
 })();
 </script>
@@ -680,7 +668,7 @@ setTimeout(function(){
   var l=document.getElementById('loader'); if(l) l.remove();
 },4000);
 </script>
-<script>setTimeout(function(){var l=document.getElementById('loader'); if(l) l.remove();},2200);</script>
+<script>setTimeout(function(){var l=document.getElementById('loader'); if(l) l.remove();},1300);</script>
 
 <script>
 (function(){
