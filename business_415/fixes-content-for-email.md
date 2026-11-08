@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From a brochure page to a working shopfront Built from a direct check of the current Maine Commercial Realty website on 8 November 2026.
 
- 01 — What's missing All Properties page, after a 15-second wait, shows only commercial listings with photos and prices (restaurant $2.75M, office, warehouse, shopping center) and no homes or home search.
+ 01 — What's missing Its All Properties page shows only commercial listings with photos and prices (a restaurant, office, warehouse and shopping center) and no homes or home search.
 
  02 — Why it costs leads A buyer who cannot see a single home, price or photo will not call to ask — they move on to the next brokerage whose listings they can browse.
 
