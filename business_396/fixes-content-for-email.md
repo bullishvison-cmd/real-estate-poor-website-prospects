@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From a placeholder page to a working shopfront Built from a direct check of the current Boutique Real Estate website on 8 November 2026.
 
- 01 — What's missing Homepage says 'Live MLS search coming soon.
+ 01 — What's missing Homepage says 'Live MLS search coming soon — ask Sarah for the most up-to-date listings'; its /search page has a search box but no homes, prices or photos.
 
  02 — Why it costs leads A buyer who lands on a 'coming soon' page assumes the firm is not really open for business — and leaves.
 

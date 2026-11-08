@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From a brochure page to a working shopfront Built from a direct check of the current Foxtrot Realty website on 8 November 2026.
 
- 01 — What's missing Whole site checked (home, About, Buy): no homes, prices or photos on lakebishop.com; 'Browse listings' links out to greenvalleyranchrealestateinfo.com (separate domain) and 'Start a home search' links to the contact form.
+ 01 — What's missing No homes, prices or photos on lakebishop.com; 'Browse listings' links out to greenvalleyranchrealestateinfo.com (separate domain) and 'Start a home search' links to the contact form.
 
  02 — Why it costs leads A buyer who cannot see a single home, price or photo will not call to ask — they move on to the next brokerage whose listings they can browse.
 

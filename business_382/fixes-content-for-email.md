@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From a broken search to one that works Built from a direct check of the current Trout Team Realty website on 8 November 2026.
 
- 01 — What's missing Listings section is an unconnected placeholder: 'Your IDX / MLS listing feed connects here.
+ 01 — What's missing Listings section is an unconnected placeholder (its text says the IDX feed connects here); no homes, prices or photos.
 
  02 — Why it costs leads A buyer who hits an error or an empty frame while browsing does not try again later — they go to a site that works.
 

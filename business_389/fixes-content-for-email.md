@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From an empty listings page to homes a buyer can see Built from a direct check of the current Hunt & Nest Realty website on 8 November 2026.
 
- 01 — What's missing Homepage is about/services/testimonials copy with no homes, prices or search; its 'Property' page was empty (no listings) after a 15-second wait.
+ 01 — What's missing Homepage is about/services/testimonials copy with no homes, prices or search; its 'Property' page was empty (no listings).
 
  02 — Why it costs leads A buyer who opens the listings page and finds it empty assumes there is nothing for sale — and leaves.
 

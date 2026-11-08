@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From listings on other sites to listings on the firm's own site Built from a direct check of the current Foxway Realty website on 8 November 2026.
 
- 01 — What's missing 'Search Area Listings' leaves the site for kw.com; 'Office Listings' is a blank iframe even after 15 seconds, and its mobile link opened a blank error tab; no homes, prices or search on its own site.
+ 01 — What's missing 'Search Area Listings' leaves the site for kw.com; 'Office Listings' is a blank iframe, and its mobile link opened a blank error tab; no homes, prices or search on its own site.
 
  02 — Why it costs leads When listings live on other sites, the buyer contacts whoever answers there — not the firm that did the work of winning the listing.
 
