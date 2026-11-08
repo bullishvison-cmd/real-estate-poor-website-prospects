@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From a wall of SOLD signs to what's actually for sale Built from a direct check of the current Coy Realty website on 8 November 2026.
 
- 01 — What's missing 'Listings' section shows only Recently Sold homes (e.g.
+ 01 — What's missing 'Listings' section shows only Recently Sold homes; no for-sale homes and no search — 'Start Your Search' just anchors to the sold list.
 
  02 — Why it costs leads A buyer who sees SOLD on nearly every card assumes the firm has nothing left to sell — and stops looking.
 

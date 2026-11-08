@@ -5,7 +5,7 @@ Use in the email pitch, not on the demo page.
 
 What this redesign fixes From a static list to a search a buyer can use Built from a direct check of the current Hawaii Pacific Realty, Inc. website on 8 November 2026.
 
- 01 — What's missing Three listings shown only as grey boxes with prices and no photos, addresses or links ('Listing #1 $795,000', '#2 $9,200,000', '#3 $4,650,000') and no search.
+ 01 — What's missing Three listings shown only as grey boxes with prices and no photos, addresses or links, and no search.
 
  02 — Why it costs leads A buyer who must scroll one long static list to find anything will give up before they find the home that fits.
 
